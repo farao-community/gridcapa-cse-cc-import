@@ -1,0 +1,57 @@
+spring:
+  rabbitmq:
+    host: rabbitmq-test
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+
+minio-adapter:
+  bucket: gridcapa
+  base-path: ""
+  access-key: gridcapa
+  secret-key: gridcapa
+  url: http://minio:9000/
+
+cse-cc-runner:
+  zone-id: "Europe/Paris"
+  trm: 500
+  outputs:
+    initial-cgm: INITIAL_CGM
+    final-cgm: FINAL_CGM
+    ttc-res: TTC_RES
+  xnodes:
+    file-path: xnodes/cvg_xnodes_20200714.xml
+  combined-ras:
+    file-path: /home/farao/combinedRAs/combinedRAs.json
+  mendrisio:
+    mendrisio-cagno-line:
+      target-ch-id: ml_0001
+      ntc-id: ml_mendrisio-cagno
+    mendrisio-pst-id: SMENDR3T SMENDR32 1
+    mendrisio-node-id: SMENDR3T
+  pisa:
+    link1:
+      node-fr: SWISS111
+      node-it: SWISS211
+      fictive-lines:
+        - SWISS111 SWISS211 1
+        - SWISS111 SWISS211 2
+        - SWISS111 SWISS211 3
+    link2:
+      node-fr: SWISS311
+      node-it: SWISS411
+      fictive-lines:
+        - SWISS311 SWISS411 1
+        - SWISS311 SWISS411 2
+        - SWISS311 SWISS411 3
+  bindings:
+    request:
+      destination: cse-request
+      routing-key: "#"
+      group: cse-runner
+    response:
+      destination: cse-response
+      expiration: 60000
+  whitelist:
+    - http://localhost:9000
+    - file:/
