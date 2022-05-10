@@ -11,7 +11,7 @@
 
 	<artifactId>gridcapa-cse-cc-import-api</artifactId>
 	<name>GridCapa CSE CC import runner API</name>
-	<description>API elements for CSE CC runner</description>
+	<description>API elements for CSE CC import runner</description>
 	<packaging>jar</packaging>
 
 	<dependencies>

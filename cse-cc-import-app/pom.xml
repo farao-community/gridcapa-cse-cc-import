@@ -11,7 +11,7 @@
 
     <artifactId>gridcapa-cse-cc-import-app</artifactId>
     <name>GridCapa CSE CC import runner application</name>
-    <description>Application that performs capacity calculations on CSE zone</description>
+    <description>Application that performs import capacity calculation on CSE zone</description>
     <packaging>jar</packaging>
 
     <build>
